@@ -15,8 +15,14 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
-    - name: Build the Docker image
+    - name: Building Docker Image For Testing
       run: docker build -f ./client/Dockerfile.dev -t silvarthur/react-test ./client
       
-    - name: Run tests
+    - name: Running tests
       run: docker run -e CI=true silvarthur/react-test npm test
+
+    - name: Building Images for Sendig to Docker Hub
+      run: docker build -t silvarthur/multi-client ./client
+      run: docker build -t silvarthur/multi-nginx ./nginx
+      run: docker build -t silvarthur/multi-server ./server
+      run: docker build -t silvarthur/multi-worker ./worker
