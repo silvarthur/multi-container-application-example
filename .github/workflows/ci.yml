@@ -29,5 +29,6 @@ jobs:
     - name: Building and Pushing Client Image to Docker Hub
       uses: docker/build-push-action@v3
       with:
+        context: ./client
         push: true
         tags: silvarthur/multi-client
