@@ -17,3 +17,6 @@ jobs:
     
     - name: Build the Docker image
       run: docker build -f ./client/Dockerfile.dev -t silvarthur/react-test ./client
+      
+    - name: Run tests
+      run: docker run silvarthur/react-test npm test -- --coverage
