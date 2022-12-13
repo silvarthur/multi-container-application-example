@@ -20,8 +20,14 @@ jobs:
     - name: Running tests
       run: docker run -e CI=true silvarthur/react-test npm test
 
-    - name: Building Images for Sendig to Docker Hub
-    - run: docker build -t silvarthur/multi-client ./client
-    - run: docker build -t silvarthur/multi-nginx ./nginx
-    - run: docker build -t silvarthur/multi-server ./server
-    - run: docker build -t silvarthur/multi-worker ./worker
+    - name: Building Client Image for Sendig to Docker Hub
+      run: docker build -t silvarthur/multi-client ./client
+
+    - name: Building Nginx Image for Sendig to Docker Hub
+      run: docker build -t silvarthur/multi-nginx ./nginx
+
+    - name: Building Server Image for Sendig to Docker Hub  
+      run: docker build -t silvarthur/multi-server ./server
+
+    - name: Building Worker Image for Sendig to Docker Hub
+      run: docker build -t silvarthur/multi-worker ./worker
